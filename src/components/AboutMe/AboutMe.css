@@ -1,0 +1,157 @@
+.aboutme {
+  background-color: #202020;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "subtitle image"
+    "info image"
+    "text image"
+    "link image";
+  color: #fff;
+  column-gap: 270px;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding: 105px 70px 100px 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.aboutme__title {
+  grid-area: title;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px white solid;
+  padding-bottom: 23px;
+  margin-bottom: 66px;
+  margin-top: 0;
+}
+.aboutme__subtitle {
+  grid-area: subtitle;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  align-self: center;
+  margin-bottom: 18px;
+  margin-top: 0px;
+}
+.aboutme__info {
+  grid-area: info;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 26px;
+  margin-top: 0px;
+}
+.aboutme__text {
+  grid-area: text;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  max-width: 600px;
+  margin-bottom: 90px;
+  margin-top: 0px;
+}
+.aboutme__link {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  color: #fff;
+  margin: 0;
+}
+
+.aboutme__photo {
+  grid-area: image;
+  width: 270px;
+  height: 327px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1000px) {
+  .aboutme {
+    column-gap: 100px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .aboutme {
+    column-gap: 49px;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 90px 50px 100px 50px;
+    max-width: 768px;
+  }
+  .aboutme__subtitle {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 12px;
+  }
+  .aboutme__info {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+  .aboutme__text {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 364px;
+    margin-bottom: 80px;
+    margin-top: 0px;
+  }
+  .aboutme__link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    color: #fff;
+    margin: 0;
+  }
+  .aboutme__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .aboutme {
+    grid-template-areas:
+      "title"
+      "image"
+      "subtitle"
+      "info"
+      "text"
+      "link";
+    column-gap: 0px;
+    padding: 45px 14px 70px 14px;
+  }
+  .aboutme__title {
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+  .aboutme__subtitle {
+    font-size: 30px;
+    line-height: normal;
+    margin-bottom: 20px;
+    max-width: 292px;
+  }
+  .aboutme__info {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+  .aboutme__text {
+    font-size: 11px;
+    line-height: 16px;
+    max-width: 292px;
+    margin-bottom: 40px;
+    margin-top: 0px;
+  }
+  .aboutme__photo {
+    width: 292px;
+    height: 352px;
+    margin: 0 auto 40px auto;
+    justify-self: center;
+  }
+}

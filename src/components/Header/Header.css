@@ -1,0 +1,38 @@
+.header {
+  margin: 0px auto;
+  padding: 0 70px;
+  max-width: 1280px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.header__links {
+  display: flex;
+  align-items: center;
+  margin: 21px 0;
+}
+.header__logo {
+  width: 38px;
+  height: 38px;
+  margin: 18px auto 18px 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .header__logo {
+    margin: 18px auto 18px 0;
+  }
+  .header {
+    padding: 0 30px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .header__logo {
+    margin: 18px auto 18px 0;
+  }
+  .header {
+    padding: 0 14px;
+  }
+  .header__links {
+    margin: 24px 0;
+  }
+}

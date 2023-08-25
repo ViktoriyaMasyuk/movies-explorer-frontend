@@ -1,0 +1,114 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 56px 30px 70px 30px;
+}
+.profile__title {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0;
+  margin-bottom: 123px;
+}
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  margin: 0 auto;
+  width: 410px;
+  padding: 0 0 220px 0;
+}
+.profile__info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.profile__info__top {
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  padding-bottom: 16px;
+  margin-bottom: 17px;
+}
+.profile__text {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.profile__input {
+  color: #fff;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.profile__name-input {
+}
+.profile__email-input {
+}
+.profile__button-change {
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  background-color: inherit;
+  border: none;
+  margin-bottom: 16px;
+  padding: 0;
+}
+.profile__button-exit {
+  color: #ee3465;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .profile {
+    padding: 206px 30px 269px 30px;
+  }
+  .profile__title {
+    margin-bottom: 96px;
+  }
+  .profile__form {
+    padding: 0 0 210px 0;
+  }
+}
+@media screen and (max-width: 490px) {
+  .profile {
+    padding: 35px 30px 40px 30px;
+    max-width: 320px;
+  }
+  .profile__title {
+    margin-bottom: 80px;
+  }
+  .profile__form {
+    padding: 0 0 379px 0;
+    width: 260px;
+  }
+  .profile__button-change {
+    font-size: 12px;
+  }
+  .profile__button-exit {
+    font-size: 12px;
+  }
+}
