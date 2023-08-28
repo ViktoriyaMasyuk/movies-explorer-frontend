@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className='App'>
-      {pathname === '/saved-movies' || pathname === '/movies' || pathname === '/profile' ?
+      { pathname === '/' || pathname === '/saved-movies' || pathname === '/movies' || pathname === '/profile' ?
         <Header
           isOpen={isNavPopupOpen}
           onClose={handleClosePopup}

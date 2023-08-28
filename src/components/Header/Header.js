@@ -7,28 +7,27 @@ import NavBar from '../NavBar/NavBar';
 
 function Header({ isOpen, onClose, onEditNavPopup }) {
 
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   return (
-    <>
-      <header className='header'>
-        <div className='header__component'>
-          <a href='/#about-project'>
-            <img className='header__logo' alt='Логотип' src={logo} />
-          </a>
-        </div>
-        <div className='header__links'>
+    <header className={`header ${pathname !== '/' ? '' : 'header_theme_main'}`}>
+      <section className='header__section'>
+      <div className='header__component'>
+        <a href='/#about-project'>
+          <img className='header__logo' alt='Логотип' src={logo} />
+        </a>
+      </div>
+      <div className='header__links'>
         {pathname === '/' ?
           <NavLinks
           /> : <NavBar
-          isOpen={isOpen}
-          onClose={onClose}
-          onEditNavPopup={onEditNavPopup}
-        />}
-        </div>
-
-      </header>
-    </>
+            isOpen={isOpen}
+            onClose={onClose}
+            onEditNavPopup={onEditNavPopup}
+          />}
+      </div>
+      </section>
+    </header>
   );
 }
 export default Header;
