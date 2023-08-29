@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 
 function Sign(props) {
     return (
-        <div className='sign'>
+        <section className='sign'>
             <a href='/'>
                 <img className='header__logo' alt='Логотип' src={logo} />
             </a>
@@ -46,7 +46,7 @@ function Sign(props) {
             <p className='sign__text'>
                 {props.text} <a className='sign__link' href={props.link}>{props.linkText}</a>
             </p>
-        </div>
+        </section>
     )
 }
 export default Sign;

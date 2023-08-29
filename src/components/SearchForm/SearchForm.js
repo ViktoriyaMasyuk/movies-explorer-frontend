@@ -23,8 +23,6 @@ function SearchForm() {
         <FilterCheckbox />
       </form>
     </section>
-
-
   );
 };
 export default SearchForm;

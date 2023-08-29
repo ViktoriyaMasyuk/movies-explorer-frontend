@@ -4,7 +4,7 @@ import React from 'react';
 
 function Register() {
     return (
-        <section className='register'>
+        <main className='register'>
             <form className='register__form'>
                 <Sign
                     title={'Добро пожаловать!'}
@@ -27,12 +27,9 @@ function Register() {
                         />
                         <span className='form__input-error' />
                     </>
-
                 </Sign>
-
             </form>
-        </section>
-
+        </main>
     )
 };
 export default Register;
