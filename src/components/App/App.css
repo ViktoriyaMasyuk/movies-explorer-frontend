@@ -1,0 +1,18 @@
+.App {
+  width: 100%;
+}
+:link {
+  opacity: 1;
+  transition: opacity 1s linear 0.1s;
+}
+:link:hover {
+  opacity: 0.7;
+}
+.button__hover {
+  opacity: 1;
+  transition: opacity 1s linear 0.1s;
+  cursor: pointer;
+}
+.button__hover:hover {
+  opacity: 0.8;
+}

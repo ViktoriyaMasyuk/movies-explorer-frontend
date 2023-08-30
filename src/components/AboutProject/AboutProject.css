@@ -1,0 +1,183 @@
+.aboutproject {
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "subtitle subtitle2"
+    "text text2"
+    "container container";
+  color: #fff;
+  justify-items: stretch;
+  justify-content: space-between;
+  padding: 90px 70px;
+  max-width: 1280px;
+  margin: 0 auto;
+  column-gap: 50px;
+}
+
+.aboutproject__title {
+  grid-area: title;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px white solid;
+  padding-bottom: 23px;
+  margin-bottom: 70px;
+}
+.aboutproject__subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  margin: 0;
+  max-width: 550px;
+}
+.aboutproject__text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 110px;
+  max-width: 550px;
+  margin-top: 20px;
+}
+.aboutproject__container {
+  display: grid;
+  grid-area: container;
+  grid-template-areas:
+    "button button2 button2 button2 button2"
+    "button-text button-text2 button-text2 button-text2 button-text2";
+  justify-content: stretch;
+  justify-items: stretch;
+  column-gap: 0;
+  width: 100%;
+}
+.aboutproject__button-text {
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  margin-top: 14px;
+}
+.aboutproject__button__back {
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  height: 36px;
+  background: #3ddc84;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+.aboutproject__button__front {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  height: 36px;
+  background: #303030;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+}
+.aboutproject__area__one {
+  grid-area: subtitle;
+}
+.aboutproject__area__two {
+  grid-area: text;
+}
+.aboutproject__area__three {
+  grid-area: subtitle2;
+}
+.aboutproject__area__four {
+  grid-area: text2;
+}
+.aboutproject__area__five {
+  grid-area: button;
+}
+.aboutproject__area__six {
+  grid-area: button-text;
+}
+.aboutproject__area__seven {
+  grid-area: button2;
+}
+.aboutproject__area__eight {
+  grid-area: button-text2;
+}
+
+@media screen and (max-width: 800px) {
+  .aboutproject {
+    max-width: 768px;
+    padding: 70px 50px;
+    grid-template-areas:
+      "title title"
+      "subtitle subtitle2"
+      "text text2"
+      "container container";
+    justify-content: center;
+    column-gap: 30px;
+  }
+  .aboutproject__subtitle {
+    max-width: 319px;
+  }
+  .aboutproject__text {
+    max-width: 319px;
+    margin-bottom: 93px;
+    font-size: 14px;
+    line-height: 18px;
+    align-self: stretch;
+  }
+}
+@media screen and (max-width: 500px) {
+  .aboutproject {
+    padding: 70px 18px;
+    grid-template-areas:
+      "title"
+      "subtitle"
+      "text"
+      "subtitle2"
+      "text2"
+      "container";
+    justify-content: center;
+    column-gap: 30px;
+  }
+  .aboutproject__title {
+    margin: 0;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    padding-bottom: 28px;
+  }
+  .aboutproject__subtitle {
+    margin-top: 60px;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+  .aboutproject__text {
+    margin: 0;
+    font-size: 11px;
+    line-height: 16px;
+    align-self: stretch;
+  }
+  .aboutproject__container {
+    margin-top: 60px;
+  }
+  .aboutproject__button-text {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 10px;
+  }
+  .aboutproject__button__back {
+    font-size: 11px;
+  }
+  .aboutproject__button__front {
+    font-size: 11px;
+  }
+}

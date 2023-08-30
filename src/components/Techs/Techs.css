@@ -1,0 +1,125 @@
+.techs {
+  color: #fff;
+  background-color: #272727;
+  margin: 0 auto;
+  width: 100%;
+}
+.techs__paragraph {
+  max-width: 1280px;
+  padding: 90px 70px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.techs__title {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px white solid;
+  padding-bottom: 23px;
+  margin-bottom: 90px;
+  text-align: left;
+  width: 100%;
+}
+.techs__subtitle {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  align-self: center;
+  margin: 0;
+}
+.techs__text {
+  max-width: 460px;
+  align-self: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  margin: 26px auto 80px auto;
+}
+.techs__buttons {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: center;
+}
+.techs__buton {
+  text-align: center;
+  text-justify: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: -0.56px;
+  border: 1px #303030 solid;
+  background: #303030;
+  border-radius: 10px;
+  width: 90px;
+  height: 60px;
+  align-items: center;
+  padding: 21px auto 22px auto;
+  margin-right: 10px;
+}
+@media screen and (max-width: 800px) {
+  .techs__paragraph {
+    max-width: 768px;
+    padding: 90px 50px 70px 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .techs__title {
+    margin-top: 0;
+  }
+  .techs__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 20px auto 65px auto;
+  }
+}
+@media screen and (max-width: 700px) {
+  .techs__buttons {
+    flex-wrap: wrap;
+  }
+  .techs__buton {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .techs__paragraph {
+    padding: 55px 14px 70px 14px;
+    max-width: 320px;
+  }
+  .techs__title {
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    margin-bottom: 60px;
+  }
+  .techs__subtitle {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -0.88px;
+  }
+  .techs__text {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.44px;
+    margin: 24px auto 30px auto;
+  }
+  .techs__buton {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    height: 57px;
+    padding: 21px auto 21px auto;
+    margin-bottom: 10px;
+  }
+}
