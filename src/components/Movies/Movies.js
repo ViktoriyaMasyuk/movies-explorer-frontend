@@ -16,7 +16,6 @@ function Movies({ movies,
   const [searchWord, setSearchWord] = useState("");
   const [preloader, setPreloader] = useState(false);
   const [isShorts, setIsShorts] = useState(false);
-  //const [moviesSaved, setMoviesSaved] = useState(null);
   const isSavedMovies = false;
 
   // ДЛЯ КОМПОНЕНТА Movies
@@ -61,41 +60,7 @@ function Movies({ movies,
   };
 
   // ДЛЯ КОМПОНЕНТА MoviesCard
-  // поиск фильма в массиве с сохраненными фильмами, чтобы по id была возможность удалить
-  // function savedMoviesToggle(movies, isSaved) {
-  //   if (isSaved) {
-  //     const objFilm = {
-  //       image: 'https://api.nomoreparties.co' + film.image.url,
-  //       trailer: film.trailerLink,
-  //       thumbnail: 'https://api.nomoreparties.co' + film.image.url,
-  //       movieId: film.id,
-  //       country: film.country || 'Неизвестно',
-  //       director: film.director,
-  //       duration: film.duration,
-  //       year: film.year,
-  //       description: film.description,
-  //       nameRU: film.nameRU,
-  //       nameEN: film.nameEN,
-  //     };
-  //     try {
-  //       await mainApi.addMovies(objFilm);
-  //       const newSaved = await mainApi.getMovies();
-  //       setFilmsSaved(newSaved);
-  //     } catch (err) {
-  //       openPopup('Во время добавления фильма произошла ошибка.');
-  //     }
-  //   } else {
-  //     try {
-  //       await mainApi.deleteMovies(film._id);
-  //       const newSaved = await mainApi.getMovies();
-  //       setFilmsSaved(newSaved);
-  //     } catch (err) {
-  //       openPopup('Во время удаления фильма произошла ошибка.');
-  //     }
-  //   }
-  // }
-
-
+  // поиск в списке сохраненых фильмов
   const findMovie = useCallback(
     (movie, isSaved) => {
       if (isSaved) {
