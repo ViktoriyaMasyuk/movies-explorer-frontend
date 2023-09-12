@@ -2,7 +2,7 @@ import "./App.css";
 import '../Header/Header'
 import Main from "../Main/Main";
 import React, { useCallback, useEffect, useState } from 'react';
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
@@ -256,13 +256,13 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route
             path="/sign-up"
-            element={<Register
-              onRegister={handleRegisterUser}
-            />}
-          />
+            element={!isLoggedIn ? <Navigate to='/movies'/> : <Register
+            onRegister={handleRegisterUser}
+          /> }
+            />
           <Route
             path="/sign-in"
-            element={<Login
+            element={!isLoggedIn ? <Navigate to='/movies'/> : <Login
               onLogin={handleAuthorizationUser}
             />}
           />
