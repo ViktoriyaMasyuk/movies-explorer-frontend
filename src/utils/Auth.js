@@ -10,11 +10,9 @@ function getResponse(res) {
 //регистрация пользователя
 export const register = (data) => {
   return fetch(`${BASE_URL}/signup`, {
-    //mode: 'no-cors',
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-    //"Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
       name: data.name,

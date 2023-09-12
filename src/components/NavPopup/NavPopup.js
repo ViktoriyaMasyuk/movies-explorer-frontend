@@ -3,7 +3,7 @@ import React from 'react';
 import profile from '../../images/icon__COLOR_icon-main.svg';
 import { NavLink } from 'react-router-dom';
 
-function NavPopup({isOpen, onClose}) {
+function NavPopup({ isOpen, onClose }) {
     return (
         <section className={`navPopup ${isOpen ? `navPopup__opened` : ""}`}>
             <button className='navPopup__close' onClick={onClose}></button>

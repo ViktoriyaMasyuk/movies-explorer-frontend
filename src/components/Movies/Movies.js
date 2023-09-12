@@ -18,11 +18,9 @@ function Movies({ movies,
   const [isShorts, setIsShorts] = useState(false);
   const isSavedMovies = false;
 
-  // ДЛЯ КОМПОНЕНТА Movies
   // функция фильтра фильмов
   function handleFilterMovies(movies, movieSearch, isShorts) {
     let filteredMovies;
-    //console.log(movies);
     filteredMovies = movies.filter((movie) => {
       return movie.nameRU.toLowerCase().startsWith(movieSearch) && (isShorts ? movie.duration < 40 : movie.duration > 0);
     });
@@ -30,7 +28,6 @@ function Movies({ movies,
       return 'Nothing to find'
     }
     else {
-      //console.log(filteredMovies)
       return filteredMovies;
     }
   };
@@ -59,7 +56,6 @@ function Movies({ movies,
     localStorage.setItem("searchWord", word);
   };
 
-  // ДЛЯ КОМПОНЕНТА MoviesCard
   // поиск в списке сохраненых фильмов
   const findMovie = useCallback(
     (movie, isSaved) => {
@@ -93,7 +89,6 @@ function Movies({ movies,
     [savedMovies]
   );
 
-  // ДЛЯ КОМПОНЕНТА FilterCheckbox
   // изменение состояния чекбокса
   const handleClickCheckbox = (e) => {
     if (e.target.checked) {
@@ -105,7 +100,6 @@ function Movies({ movies,
     }
   };
 
-  // ДЛЯ КОМПОНЕНТА SearchForm
   // подстановка текста в инпут из хранилища при перезагрузке
   const putWordInInput = (setValues) => {
     if (localStorage.getItem("searchWord") !== null) {
@@ -141,19 +135,12 @@ function Movies({ movies,
         handleClickCheckbox={handleClickCheckbox}
         handlePutWord={putWordInInput}
         isShorts={isShorts}
-      // movieSearch={movieSearch}
-      // setMovieSearch={setMovieSearch}
-      // handleClickCheckbox={handleClickCheckbox}
-      // isShorts={isShorts}
-      // handleSubmit={handleSubmit}
       />
       <Preloader isVisible={preloader} />
       <MoviesCardList
         movies={filterMovies}
         searchWord={searchWord}
         isSavedMovies={isSavedMovies}
-        //savedMoviesToggle={savedMoviesToggle}
-        //moviesSaved={moviesSaved}
         handleIsSavedToogle={handleIsSavedToogle}
         checkIsSaved={checkIsSaved}
       />

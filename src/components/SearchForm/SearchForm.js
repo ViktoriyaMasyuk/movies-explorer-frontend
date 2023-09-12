@@ -2,7 +2,6 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 import React, { useEffect, useRef, useState } from 'react';
 
-
 function SearchForm({
   findNewMovies,
   handlePutWord,
@@ -56,7 +55,7 @@ function SearchForm({
   return (
     <section className='search'>
       <form className='search__form'
-        onSubmit={handleSubmit} 
+        onSubmit={handleSubmit}
         noValidate>
         <label className='search__container'>
           <input

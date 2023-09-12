@@ -9,21 +9,21 @@ function Register({ onRegister }) {
     const [isValid, setIsValid] = useState(false);
 
     function handleChange(e) {
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
+        const target = e.target;
+        const name = target.name;
+        const value = target.value;
 
-    if (name === 'email') {
-      if (!isEmail(value)) {
-        target.setCustomValidity('Некорректый адрес почты');
-      } else {
-        target.setCustomValidity('');
-      }
-    }
+        if (name === 'email') {
+            if (!isEmail(value)) {
+                target.setCustomValidity('Некорректый адрес почты');
+            } else {
+                target.setCustomValidity('');
+            }
+        }
 
-    setFormValue({ ...formValue, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
-    setIsValid(target.closest('form').checkValidity());
+        setFormValue({ ...formValue, [name]: value });
+        setErrors({ ...errors, [name]: target.validationMessage });
+        setIsValid(target.closest('form').checkValidity());
     };
 
     function handleSubmit(e) {

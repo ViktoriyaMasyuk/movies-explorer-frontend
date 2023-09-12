@@ -33,6 +33,7 @@ function Profile({ onSignOut, onUpdateUser }) {
         onUpdateUser(formValue.name, formValue.email);
     };
 
+
     return (
         <>
             <section className='profile'>
@@ -73,10 +74,10 @@ function Profile({ onSignOut, onUpdateUser }) {
                     <span className={`sign__input-error ${errors.email ? 'sign__input-error-display' : ''}`}>{errors.email}</span>
                 </form>
                 <button className={`profile__button-change button__hover ${isValid &&
-                        (formValue.name !== currentUser.name ||
-                            formValue.email !== currentUser.email)
-                        ? ""
-                        : "sign__button_disabled"
+                    (formValue.name !== currentUser.name ||
+                        formValue.email !== currentUser.email)
+                    ? ""
+                    : "sign__button_disabled"
                     }`}
                     type='submit'
                     disabled={
@@ -84,7 +85,7 @@ function Profile({ onSignOut, onUpdateUser }) {
                         (formValue.name === currentUser.name ||
                             formValue.email === currentUser.email)
                     } onClick={handleSubmit}
-                    >Редактировать</button>
+                >Редактировать</button>
                 <button className='profile__button-exit button__hover' type='button' onClick={onSignOut}>Выйти из аккаунта</button>
 
             </section>

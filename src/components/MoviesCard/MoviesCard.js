@@ -11,15 +11,15 @@ function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved })
         handleIsSavedToogle(e, movie, setIsSaved, isSaved);
     };
 
-      useEffect(() => {
+    useEffect(() => {
         if (!isSavedMovies) {
-          if (checkIsSaved(movie)) {
-            setIsSaved(true);
-          } else {
-            setIsSaved(false);
-          }
+            if (checkIsSaved(movie)) {
+                setIsSaved(true);
+            } else {
+                setIsSaved(false);
+            }
         }
-      }, [checkIsSaved, movie, isSavedMovies]);
+    }, [checkIsSaved, movie, isSavedMovies]);
 
     const formatTime = (minutes) => {
         const min = minutes % 60;
@@ -38,28 +38,23 @@ function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved })
                         <h2 className='card__title'>{movie.nameRU}</h2>
                         <p className='card__duration'>{formatTime(movie.duration)}</p>
                     </div>
-                    <img className='card__image' alt={movie.nameRU} src={`https://api.nomoreparties.co/${movie.image.url}`} />
+                    <img
+                        className='card__image'
+                        alt={movie.nameRU}
+                        src={
+                            isSavedMovies
+                                ? movie.image
+                                : `https://api.nomoreparties.co/${movie.image.url}`} />
                 </a>
                 {pathname === '/movies' ? (
                     <button type="button" className={`card__button card__button_type${isSaved ? '_is-saved' : '_save'}`} onClick={handleOnClick}>{isSaved ? "" : "Сохранить"}</button>
                 ) :
-                (
-                    <button
-                    onClick={handleOnClick}
-                    className="card__button card__button_type_delete"
-                ></button>
-                )}
-                {/* {!isSavedMovies && (
-                    <button className={`card__button ${isSaved
-                            ? "card__button_type_is-saved"
-                            : "card__button_type_save"
-                        } `} type='submit' onClick={onClick}>{isSaved ? "" : "Сохранить"}</button>)}
-                {isSavedMovies && (
-                    <button
-                        onClick={onClick}
-                        className="card__button card__button_type_delete"
-                    ></button>
-                )} */}
+                    (
+                        <button
+                            onClick={handleOnClick}
+                            className="card__button card__button_type_delete"
+                        ></button>
+                    )}
             </article>
         </>
     );

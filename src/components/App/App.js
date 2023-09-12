@@ -1,7 +1,7 @@
 import "./App.css";
 import '../Header/Header'
 import Main from "../Main/Main";
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -37,24 +37,41 @@ function App() {
   //навигация
   const navigate = useNavigate();
 
-    // проверка токена авторизации
-    useEffect(() => {
-      tokenCheck();
-    }, [])
+  // проверка токена авторизации
+  const tokenCheck = useCallback(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      Auth.getContent(jwt)
+        .then((res) => {
+          if (res) {
+            handleLogin();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
 
-    useEffect(() => {
-      if (isLoggedIn === true) {
-        MainApi.getUserInfo()
-          .then((currentUser) => {
-            //console.log(currentUser)
-            setCurrentUser(currentUser.data);
-            //setCards(cards.data);
-          })
-          .catch((err) => {
-            console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
-          });
-      }
-    }, [isLoggedIn]);
+  useEffect(() => {
+    tokenCheck();
+  }, [tokenCheck])
+
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      Promise.all([MainApi.getUserInfo(), MainApi.getSavedMovies()])
+        .then(([currentUser, savedMovies]) => {
+          console.log(currentUser)
+          console.log(savedMovies)
+          setCurrentUser(currentUser.data);
+          setSavedMovies(savedMovies);
+          console.log(savedMovies)
+        })
+        .catch((err) => {
+          console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
+        });
+    }
+  }, [isLoggedIn]);
 
   // открытие и закрытие попапа навигации
   function handleEditNavBarClick() {
@@ -92,16 +109,15 @@ function App() {
         preloader(false);
       });
   };
-  
+
   // регистрация пользователя
   function handleRegisterUser(data) {
     Auth.register(data)
-      .then((data) => {
-        if (data) {
-          handleLogin();
-          handleOpenInfoTooltip('Вы успешно зарегистрировались!');
-          navigate("/movies", { replace: true });
-        }
+      .then((res) => {
+        localStorage.setItem('jwt', res.token);
+        handleLogin();
+        handleOpenInfoTooltip('Вы успешно зарегистрировались!');
+        navigate("/movies", { replace: true });
       })
       .catch((err) => {
         navigate("/sign-up");
@@ -127,21 +143,6 @@ function App() {
         console.log(err);
       })
   }
-  //проверка токена
-  function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      Auth.getContent(jwt)
-        .then((res) => {
-          if (res) {
-            handleLogin();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
 
   // функция выхода из аккаунта
   function signOut() {
@@ -149,18 +150,24 @@ function App() {
     setCurrentUser({});
     navigate("/sign-in");
     localStorage.removeItem('jwt');
+    localStorage.removeItem('arrayMovies');
+    localStorage.removeItem('isShorts');
+    localStorage.removeItem('searchWord');
+    localStorage.removeItem('searchWordSavedMovies');
+    localStorage.removeItem('isShortsSavedMovies');
   }
   // функция обновления данных профиля
   function handleUpdateUser(name, email) {
+    console.log(name, email);
     MainApi.updateUserInfo(name, email)
-    .then((data) => {
-      setCurrentUser(data);
-      handleOpenInfoTooltip('Вы успешно изменили данные профиля!');
-    })
-    .catch((err) => {
-      handleOpenInfoTooltip('Произошла ошибка!');
-      console.log(err);
-    })
+      .then((data) => {
+        setCurrentUser(data);
+        handleOpenInfoTooltip('Вы успешно изменили данные профиля!');
+      })
+      .catch((err) => {
+        handleOpenInfoTooltip('Произошла ошибка!');
+        console.log(err);
+      })
   }
 
   // функция сохранения фильма
@@ -208,7 +215,6 @@ function App() {
       });
   };
 
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='App'>
@@ -236,10 +242,9 @@ function App() {
           <Route path='/saved-movies/*' element={
             <ProtectedRouteElement
               element={SavedMovies}
-              isOpen={isNavPopupOpen}
-              onClose={handleCloseNavPopup}
-              onEditNavPopup={handleEditNavBarClick}
               isLoggedIn={isLoggedIn}
+              savedMovies={savedMovies}
+              handleDeleteMovie={handleDeleteMovie}
             />} />
           <Route path='/profile/*' element={
             <ProtectedRouteElement
@@ -248,7 +253,6 @@ function App() {
               onSignOut={signOut}
               onUpdateUser={handleUpdateUser}
             />} />
-
           <Route path='*' element={<NotFound />} />
           <Route
             path="/sign-up"
@@ -260,7 +264,7 @@ function App() {
             path="/sign-in"
             element={<Login
               onLogin={handleAuthorizationUser}
-              />}
+            />}
           />
         </Routes>
         {pathname === '/' || pathname === '/saved-movies' || pathname === '/movies' ?

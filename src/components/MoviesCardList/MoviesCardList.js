@@ -2,10 +2,10 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 import React, { useEffect, useState } from 'react';
 
-function MoviesCardList({ movies, isSavedMovies,
+function MoviesCardList({ movies, isSavedMovies, savedMovies,
   searchWord,
   handleIsSavedToogle,
-  checkIsSaved
+  checkIsSaved,
 }) {
   // количество фильмов на странице
   const [amountOfMovies, setAmountOfMovies] = useState(null);
@@ -21,7 +21,7 @@ function MoviesCardList({ movies, isSavedMovies,
     }
   };
 
-  // добавление фильмов при клике на кнопку ЕЩЁ
+  // добавление фильмов при клике на кнопку еще
   const addMovies = () => {
     if (window.innerWidth > 1270) {
       setAmountOfMovies(amountOfMovies + 3);
@@ -38,46 +38,36 @@ function MoviesCardList({ movies, isSavedMovies,
     return () => {
       window.removeEventListener("resize", screenWidth);
     };
-
-    // window.addEventListener("resize", resizeThrottler, false);
-  
-    // function resizeThrottler() {
-    //   let resizeTimeout;
-    //   if ( !resizeTimeout ) {
-    //     resizeTimeout = setTimeout(function() {
-    //       resizeTimeout = null;
-    //       screenWidth();
-    //      }, 10);
-    //   }
-    // }
   }, [searchWord]);
 
   return (
     <section className="cardlist">
       <div className='cardlist__elements'>
-          {Array.isArray(movies)
-            ? movies
+        {!isSavedMovies && (Array.isArray(movies)
+          ? movies
             .slice(0, amountOfMovies)
             .map((movie) => (
               <MoviesCard
-              key={movie.id}
-              movie={movie}
-              isSavedMovies={isSavedMovies}
-              handleIsSavedToogle={handleIsSavedToogle}
-              checkIsSaved={checkIsSaved}
+                key={movie.id}
+                movie={movie}
+                isSavedMovies={isSavedMovies}
+                handleIsSavedToogle={handleIsSavedToogle}
+                checkIsSaved={checkIsSaved}
               />
             ))
-            : <div className="cardlist__text">Ничего не найдено</div>}
-        {/* {isSavedMovies &&
-          movies.map((movie) => (
-            <MoviesCard
-            key={movie.id}
-            movie={movie}
-              isSavedMovies={isSavedMovies}
-              //handleOnClick={handleOnClick}
-              //checkIsSaved={checkIsSaved}
-            />
-          ))} */}
+          : <div className="cardlist__text">Ничего не найдено</div>)}
+        {isSavedMovies && (Array.isArray(savedMovies)
+          ? savedMovies
+            .map((savedMovie) => (
+              <MoviesCard
+                key={savedMovie.id}
+                movie={savedMovie}
+                isSavedMovies={isSavedMovies}
+                handleIsSavedToogle={handleIsSavedToogle}
+                checkIsSaved={checkIsSaved}
+              />
+            ))
+          : <div className="cardlist__text">Ничего не найдено</div>)}
       </div>
       {!isSavedMovies && movies.length > amountOfMovies && (movies.length !== 0) && (
         <button onClick={addMovies} className='cardlist__button-more' type='button'>Ещё</button>
