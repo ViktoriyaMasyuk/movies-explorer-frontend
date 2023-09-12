@@ -30,7 +30,9 @@ function Profile({ onSignOut, onUpdateUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onUpdateUser(formValue.name, formValue.email);
+        if ( currentUser.name !== formValue.name && currentUser.email !== formValue.email) {
+            onUpdateUser(formValue.name, formValue.email);
+        };
     };
 
 
