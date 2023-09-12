@@ -6,6 +6,10 @@ dark-4
 ##  ссылка на pulrequest:
 https://github.com/ViktoriyaMasyuk/movies-explorer-frontend/pull/2
 
+##  ссылка на сайт:
+https://v-masyuk.diplom.nomoredomainsicu.ru
+
+
 ## Использованные технологии
 
 - HTML
