@@ -15,7 +15,7 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     console.log('in filter func')
     console.log(savedMovies);
     filteredMovies = savedMovies.filter((movie) => {
-      return movie.nameRU.toLowerCase().startsWith(movieSearchSavedMovies) && (isShortsSavedMovies ? movie.duration < 40 : movie.duration > 0);
+      return movie.nameRU.toLowerCase().trim().startsWith(movieSearchSavedMovies.trim().toLowerCase()) && (isShortsSavedMovies ? movie.duration < 40 : movie.duration > 0);
     });
     if (filteredMovies.length === 0) {
       return 'Nothing to find'
