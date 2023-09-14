@@ -1,8 +1,8 @@
 import "./App.css";
 import '../Header/Header'
 import Main from "../Main/Main";
-import React, { useCallback, useEffect, useState } from 'react';
-import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation,useNavigate, Navigate } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
@@ -36,42 +36,46 @@ function App() {
   const { pathname } = useLocation();
   //навигация
   const navigate = useNavigate();
+  const token = localStorage.getItem("jwt");
 
-  // проверка токена авторизации
-  const tokenCheck = useCallback(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      Auth.getContent(jwt)
-        .then((res) => {
-          if (res) {
-            handleLogin();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  useEffect(() => {
+    if (token) {
+      setLoggedIn(true);
+      if (pathname === "/signup" || pathname === "/signin") {
+        navigate("/movies");
+      } else {
+        navigate(pathname);
+      }
     }
-  }, []);
+  }, [token, navigate, pathname]);
 
   useEffect(() => {
-    tokenCheck();
-  }, [tokenCheck])
+    if (isLoggedIn) {
+      getUserInfo();
+      getSavedMovies();
+    }
+  }, [isLoggedIn]);
 
-  useEffect(() => {
-    if (isLoggedIn === true) {
-      Promise.all([MainApi.getUserInfo(), MainApi.getSavedMovies()])
-        .then(([currentUser, savedMovies]) => {
-          console.log(currentUser)
-          console.log(savedMovies)
+  function getUserInfo() {
+    MainApi.getUserInfo()
+        .then((currentUser) => {
           setCurrentUser(currentUser.data);
-          setSavedMovies(savedMovies);
-          console.log(savedMovies)
         })
         .catch((err) => {
           console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
         });
-    }
-  }, [isLoggedIn]);
+      //}
+  }
+
+  function getSavedMovies() {
+    MainApi.getSavedMovies()
+        .then((savedMovies) => {
+          setSavedMovies(savedMovies);
+        })
+        .catch((err) => {
+          console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
+        });
+  }
 
   // открытие и закрытие попапа навигации
   function handleEditNavBarClick() {
@@ -256,13 +260,13 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route
             path="/sign-up"
-            element={!isLoggedIn ? <Navigate to='/movies'/> : <Register
+            element={isLoggedIn ? <Navigate to='/movies'/> : <Register
             onRegister={handleRegisterUser}
           /> }
             />
           <Route
             path="/sign-in"
-            element={!isLoggedIn ? <Navigate to='/movies'/> : <Login
+            element={isLoggedIn ? <Navigate to='/movies'/> : <Login
               onLogin={handleAuthorizationUser}
             />}
           />

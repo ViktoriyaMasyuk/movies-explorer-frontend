@@ -12,8 +12,6 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
   // функция фильтра фильмов
   function handleFilterMovies(savedMovies, movieSearchSavedMovies, isShortsSavedMovies) {
     let filteredMovies;
-    console.log('in filter func')
-    console.log(savedMovies);
     filteredMovies = savedMovies.filter((movie) => {
       return movie.nameRU.toLowerCase().trim().startsWith(movieSearchSavedMovies.trim().toLowerCase()) && (isShortsSavedMovies ? movie.duration < 40 : movie.duration > 0);
     });
@@ -28,8 +26,6 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
   const filterMovies = useMemo(() => {
     if (searchWordSavedMovies.length === 0 &&
       isShortsSavedMovies === false) {
-      console.log('in filterMOvies')
-      console.log(savedMovies)
       return savedMovies;
     }
     return handleFilterMovies(savedMovies, searchWordSavedMovies, isShortsSavedMovies);
@@ -51,7 +47,6 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
 
   // MoviesCard: поиск в списке сохраненых фильмов
   const handleOnClick = (event, movie, setIsSaved) => {
-    console.log(movie);
     event.preventDefault();
     handleDeleteMovie(movie, setIsSaved);
   };

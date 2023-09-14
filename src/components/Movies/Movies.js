@@ -7,7 +7,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 function Movies({ movies,
   getMovies,
   setMovies,
-  loggedIn,
   handleSaveMovie,
   savedMovies,
   handleDeleteMovie, }) {
