@@ -32,15 +32,7 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
   }, [savedMovies, searchWordSavedMovies, isShortsSavedMovies]);
 
   // функция проверки и отправления запроса к массиву фильмов 
-  const findNewMovies = (word, setErrors) => {
-    // не проводить повторный поиск, если слово не изменилось
-    if (word === searchWordSavedMovies) {
-      setErrors((prev) => ({
-        ...prev,
-        movie: "Вы только что искали этот фильм",
-      }));
-      return;
-    }
+  const findNewMovies = (word) => {
     setSearchWordSavedMovies(word);
     localStorage.setItem("searchWordSavedMovies", word);
   };
