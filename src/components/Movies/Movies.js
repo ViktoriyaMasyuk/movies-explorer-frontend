@@ -21,7 +21,7 @@ function Movies({ movies,
   function handleFilterMovies(movies, movieSearch, isShorts) {
     let filteredMovies;
     filteredMovies = movies.filter((movie) => {
-      return movie.nameRU.toLowerCase().trim().startsWith(movieSearch.trim().toLowerCase()) && (isShorts ? movie.duration < 40 : movie.duration > 0);
+      return movie.nameRU.toLowerCase().trim().includes(movieSearch.trim().toLowerCase()) && (isShorts ? movie.duration < 40 : movie.duration > 0);
     });
     if (filteredMovies.length === 0) {
       return 'Nothing to find'

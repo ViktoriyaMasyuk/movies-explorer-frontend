@@ -67,7 +67,6 @@ function SearchForm({
             type='text'
             size='25'
             minLength="1"
-            maxLength="30"
             required
             placeholder="Фильм"
             value={values.movie || ''}
