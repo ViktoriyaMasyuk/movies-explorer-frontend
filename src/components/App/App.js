@@ -152,7 +152,7 @@ function App() {
   function signOut() {
     setLoggedIn(false);
     setCurrentUser({});
-    navigate("/sign-in");
+    navigate("/");
     localStorage.removeItem('jwt');
     localStorage.removeItem('arrayMovies');
     localStorage.removeItem('isShorts');
