@@ -116,6 +116,7 @@ function Movies({ movies,
         handlePutWord={putWordInInput}
         isShorts={isShorts}
         setIsShorts={setIsShorts}
+        isSavedMovies={isSavedMovies}
       />
       <Preloader isVisible={preloader} />
       <MoviesCardList

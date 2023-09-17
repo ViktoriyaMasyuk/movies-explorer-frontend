@@ -1,4 +1,6 @@
-export const BASE_URL = "";
+import { MAIN_URL } from "./constants";
+
+export const BASE_URL = MAIN_URL;
 
 function getResponse(res) {
   if (res.ok) {

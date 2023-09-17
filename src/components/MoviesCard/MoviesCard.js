@@ -45,7 +45,7 @@ function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved })
                         src={
                             isSavedMovies
                                 ? movie.image
-                                : `SERVER_URL/${movie.image.url}`} />
+                                : SERVER_URL + movie.image.url} />
                 </a>
                 {pathname === '/movies' ? (
                     <button type="button" className={`card__button card__button_type${isSaved ? '_is-saved' : '_save'}`} onClick={handleOnClick}>{isSaved ? "" : "Сохранить"}</button>

@@ -5,9 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 function SearchForm({
   findNewMovies,
   handlePutWord,
-  //handleClickCheckbox,
   isShorts,
   setIsShorts,
+  isSavedMovies,
 }) {
 
   const inputMovie = useRef();
@@ -64,7 +64,10 @@ function SearchForm({
   };
 
   useEffect(() => {
-    handlePutWord(setValues);
+    if (!isSavedMovies) {
+      handlePutWord(setValues);
+
+    }
   }, [handlePutWord]);
 
   return (

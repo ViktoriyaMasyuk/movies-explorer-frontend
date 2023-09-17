@@ -158,7 +158,6 @@ function App() {
     localStorage.removeItem('arrayMovies');
     localStorage.removeItem('isShorts');
     localStorage.removeItem('searchWord');
-    localStorage.removeItem('searchWordSavedMovies');
     localStorage.removeItem('isShortsSavedMovies');
   }
   // функция обновления данных профиля

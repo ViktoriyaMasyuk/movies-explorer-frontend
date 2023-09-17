@@ -35,7 +35,6 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
   // функция проверки и отправления запроса к массиву фильмов 
   const findNewMovies = (word) => {
     setSearchWordSavedMovies(word);
-    localStorage.setItem("searchWordSavedMovies", word);
   };
 
   // MoviesCard: поиск в списке сохраненых фильмов
@@ -54,22 +53,8 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     [savedMovies]
   );
 
-  // подстановка текста в инпут из хранилища при перезагрузке
-  const putWordInInput = (setValues) => {
-    if (localStorage.getItem("searchWordSavedMovies") !== null) {
-      setValues((prev) => ({
-        ...prev,
-        movie: localStorage.getItem("searchWordSavedMovies"),
-        //movie: '',
-      }));
-    }
-  };
-
   // сохранение строки поиска слова и чекбокса при перезагрузке
   useEffect(() => {
-    if (localStorage.getItem("searchWordSavedMovies") !== null) {
-      setSearchWordSavedMovies(localStorage.getItem("searchWordSavedMovies"));
-    }
     if (localStorage.getItem("isShortsSavedMovies") !== null) {
       if (localStorage.getItem("isShortsSavedMovies") === "true") {
         setIsShortsSavedMovies(true);
@@ -84,9 +69,9 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     <main className="movies">
       <SearchForm
         findNewMovies={findNewMovies}
-        handlePutWord={putWordInInput}
         isShorts={isShortsSavedMovies}
         setIsShorts={setIsShortsSavedMovies}
+        isSavedMovies={isSavedMovies}
       />
       <MoviesCardList
         savedMovies={filterMovies}
