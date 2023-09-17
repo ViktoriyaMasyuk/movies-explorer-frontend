@@ -72,7 +72,7 @@ function MoviesCardList({ movies, isSavedMovies, savedMovies,
             ))
           : <div className="cardlist__text">Ничего не найдено</div>)}
       </div>
-      {!isSavedMovies && movies.length > amountOfMovies && movies.length > 0 && (
+      {!isSavedMovies && movies.length > amountOfMovies && Array.isArray(movies) && (
         <button onClick={addMovies} className='cardlist__button-more' type='button'>Ещё</button>
       )}
     </section>
