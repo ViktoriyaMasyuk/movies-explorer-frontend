@@ -53,17 +53,6 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     [savedMovies]
   );
 
-  // изменение состояния чекбокса
-  const handleClickCheckbox = (e) => {
-    if (e.target.checked) {
-      setIsShortsSavedMovies(true);
-      localStorage.setItem("isShortsSavedMovies", true);
-    } else {
-      setIsShortsSavedMovies(false);
-      localStorage.setItem("isShortsSavedMovies", false);
-    }
-  };
-
   // подстановка текста в инпут из хранилища при перезагрузке
   const putWordInInput = (setValues) => {
     if (localStorage.getItem("searchWordSavedMovies") !== null) {
@@ -94,9 +83,9 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     <main className="movies">
       <SearchForm
         findNewMovies={findNewMovies}
-        handleClickCheckbox={handleClickCheckbox}
         handlePutWord={putWordInInput}
         isShorts={isShortsSavedMovies}
+        setIsShorts={setIsShortsSavedMovies}
       />
       <MoviesCardList
         savedMovies={filterMovies}

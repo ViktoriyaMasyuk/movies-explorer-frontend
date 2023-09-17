@@ -80,17 +80,6 @@ function Movies({ movies,
     [savedMovies]
   );
 
-  // изменение состояния чекбокса
-  const handleClickCheckbox = (e) => {
-    if (e.target.checked) {
-      setIsShorts(true);
-      localStorage.setItem("isShorts", true);
-    } else {
-      setIsShorts(false);
-      localStorage.setItem("isShorts", false);
-    }
-  };
-
   // подстановка текста в инпут из хранилища при перезагрузке
   const putWordInInput = (setValues) => {
     if (localStorage.getItem("searchWord") !== null) {
@@ -123,9 +112,9 @@ function Movies({ movies,
     <main className="movies">
       <SearchForm
         findNewMovies={findNewMovies}
-        handleClickCheckbox={handleClickCheckbox}
         handlePutWord={putWordInInput}
         isShorts={isShorts}
+        setIsShorts={setIsShorts}
       />
       <Preloader isVisible={preloader} />
       <MoviesCardList

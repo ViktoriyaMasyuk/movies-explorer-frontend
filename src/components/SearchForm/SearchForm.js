@@ -5,8 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 function SearchForm({
   findNewMovies,
   handlePutWord,
-  handleClickCheckbox,
-  isShorts
+  //handleClickCheckbox,
+  isShorts,
+  setIsShorts,
 }) {
 
   const inputMovie = useRef();
@@ -46,6 +47,20 @@ function SearchForm({
       return;
     }
     findNewMovies(values.movie, setErrors);
+  };
+
+    // // изменение состояния чекбокса
+  const handleClickCheckbox = (e) => {
+    e.preventDefault();
+    if (e.target.checked) {
+      setIsShorts(true);
+      findNewMovies(values.movie, setErrors);
+      localStorage.setItem("isShorts", true);
+    } else {
+      setIsShorts(false);
+      findNewMovies(values.movie, setErrors);
+      localStorage.setItem("isShorts", false);
+    }
   };
 
   useEffect(() => {
