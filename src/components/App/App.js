@@ -17,6 +17,7 @@ import MainApi from "../../utils/MainApi";
 import Popup from "../Popup/Popup";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRouteElement from "../ProtectedRoute.js/ProtectedRoute";
+import { SERVER_URL } from "../../utils/constants";
 
 function App() {
   // попап навигации шапки
@@ -182,9 +183,9 @@ function App() {
       duration: movie.duration,
       year: movie.year,
       description: movie.description,
-      image: 'https://api.nomoreparties.co' + movie.image.url,
+      image: SERVER_URL + movie.image.url,
       trailerLink: movie.trailerLink,
-      thumbnail: 'https://api.nomoreparties.co' + movie.image.url,
+      thumbnail: SERVER_URL + movie.image.url,
       movieId: movie.id,
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,

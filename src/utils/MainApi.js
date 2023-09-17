@@ -1,3 +1,5 @@
+import { MAIN_URL } from "./constants";
+
 class Api {
   constructor(options) {
     this.url = options.baseUrl;
@@ -69,6 +71,6 @@ class Api {
   }
 }
 const MainApi = new Api({
-  baseUrl: "https://api.v-masyuk.diplom.nomoreparties.co",
+  baseUrl: MAIN_URL,
 });
 export default MainApi;

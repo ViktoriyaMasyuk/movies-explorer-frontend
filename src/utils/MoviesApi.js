@@ -1,3 +1,5 @@
+import { SERVER_URL } from "./constants";
+
 class Api {
   constructor(options) {
     this.url = options.baseUrl;
@@ -24,6 +26,6 @@ class Api {
   }
 }
 const MoviesApi = new Api({
-  baseUrl: "https://api.nomoreparties.co",
+  baseUrl: SERVER_URL,
 });
 export default MoviesApi;

@@ -1,3 +1,4 @@
+import { LAPTOR_WIDTH, LARGE_PAGE_ADD_MOVIES_AMOUNT, LARGE_PAGE_MOVIES_AMOUNT, MEDIUM_PAGE_ADD_MOVIES_AMOUNT, MEDIUM_PAGE_MOVIES_AMOUNT, MOBILE_WIDTH, SMALL_PAGE_ADD_MOVIES_AMOUNT, SMALL_PAGE_MOVIES_AMOUNT } from '../../utils/constants';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 import React, { useEffect, useState } from 'react';
@@ -12,21 +13,23 @@ function MoviesCardList({ movies, isSavedMovies, savedMovies,
 
   // расчет количества фильмов на странице в зависимости от ширины окна
   const screenWidth = () => {
-    if (window.innerWidth > 1270) {
-      setAmountOfMovies(12);
-    } else if (window.innerWidth > 750 && window.innerWidth < 1270) {
-      setAmountOfMovies(8);
+    if (window.innerWidth > LAPTOR_WIDTH) {
+      setAmountOfMovies(LARGE_PAGE_MOVIES_AMOUNT);
+    } else if (window.innerWidth > MOBILE_WIDTH && window.innerWidth < LAPTOR_WIDTH) {
+      setAmountOfMovies(MEDIUM_PAGE_MOVIES_AMOUNT);
     } else {
-      setAmountOfMovies(5);
+      setAmountOfMovies(SMALL_PAGE_MOVIES_AMOUNT);
     }
   };
 
   // добавление фильмов при клике на кнопку еще
   const addMovies = () => {
-    if (window.innerWidth > 1270) {
-      setAmountOfMovies(amountOfMovies + 3);
+    if (window.innerWidth > LAPTOR_WIDTH) {
+      setAmountOfMovies(amountOfMovies + LARGE_PAGE_ADD_MOVIES_AMOUNT);
+    } else if (window.innerWidth > MOBILE_WIDTH && window.innerWidth < LAPTOR_WIDTH) {
+      setAmountOfMovies(amountOfMovies + MEDIUM_PAGE_ADD_MOVIES_AMOUNT);
     } else {
-      setAmountOfMovies(amountOfMovies + 2);
+      setAmountOfMovies(amountOfMovies + SMALL_PAGE_ADD_MOVIES_AMOUNT);
     }
   };
 

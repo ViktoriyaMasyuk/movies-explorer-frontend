@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import React, { useEffect, useState } from 'react';
+import { SERVER_URL } from '../../utils/constants';
 
 function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved }) {
     const [isSaved, setIsSaved] = useState(false);
@@ -44,7 +45,7 @@ function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved })
                         src={
                             isSavedMovies
                                 ? movie.image
-                                : `https://api.nomoreparties.co/${movie.image.url}`} />
+                                : `SERVER_URL/${movie.image.url}`} />
                 </a>
                 {pathname === '/movies' ? (
                     <button type="button" className={`card__button card__button_type${isSaved ? '_is-saved' : '_save'}`} onClick={handleOnClick}>{isSaved ? "" : "Сохранить"}</button>

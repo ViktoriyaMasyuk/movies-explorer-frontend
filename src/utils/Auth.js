@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.v-masyuk.diplom.nomoreparties.co";
+export const BASE_URL = "";
 
 function getResponse(res) {
   if (res.ok) {

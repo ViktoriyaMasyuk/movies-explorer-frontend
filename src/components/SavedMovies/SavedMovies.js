@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useEffect } from 'react';
+import { MAX_DURATION_SHORTS } from '../../utils/constants';
 
 function SavedMovies({ savedMovies, handleDeleteMovie }) {
   const isSavedMovies = true;
@@ -13,7 +14,7 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
   function handleFilterMovies(savedMovies, movieSearchSavedMovies, isShortsSavedMovies) {
     let filteredMovies;
     filteredMovies = savedMovies.filter((movie) => {
-      return movie.nameRU.toLowerCase().trim().includes(movieSearchSavedMovies.trim().toLowerCase()) && (isShortsSavedMovies ? movie.duration < 40 : movie.duration > 0);
+      return movie.nameRU.toLowerCase().trim().includes(movieSearchSavedMovies.trim().toLowerCase()) && (isShortsSavedMovies ? movie.duration < MAX_DURATION_SHORTS : movie.duration > 0);
     });
     if (filteredMovies.length === 0) {
       return 'Nothing to find'
