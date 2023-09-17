@@ -2,7 +2,7 @@ import "./App.css";
 import '../Header/Header'
 import Main from "../Main/Main";
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation,useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
@@ -59,23 +59,23 @@ function App() {
 
   function getUserInfo() {
     MainApi.getUserInfo()
-        .then((currentUser) => {
-          setCurrentUser(currentUser.data);
-        })
-        .catch((err) => {
-          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
-        });
-      //}
+      .then((currentUser) => {
+        setCurrentUser(currentUser.data);
+      })
+      .catch((err) => {
+        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
+      });
+    //}
   }
 
   function getSavedMovies() {
     MainApi.getSavedMovies()
-        .then((savedMovies) => {
-          setSavedMovies(savedMovies);
-        })
-        .catch((err) => {
-          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
-        });
+      .then((savedMovies) => {
+        setSavedMovies(savedMovies);
+      })
+      .catch((err) => {
+        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
+      });
   }
 
   // открытие и закрытие попапа навигации
@@ -169,8 +169,7 @@ function App() {
         handleOpenInfoTooltip('Вы успешно изменили данные профиля!');
       })
       .catch((err) => {
-        handleOpenInfoTooltip('Произошла ошибка!');
-        console.log(err);
+        handleOpenInfoTooltip('Пользователя обновить не получилось');
       })
   }
 
@@ -260,13 +259,13 @@ function App() {
           <Route path='*' element={<NotFound />} />
           <Route
             path="/sign-up"
-            element={isLoggedIn ? <Navigate to='/movies'/> : <Register
-            onRegister={handleRegisterUser}
-          /> }
-            />
+            element={isLoggedIn ? <Navigate to='/movies' /> : <Register
+              onRegister={handleRegisterUser}
+            />}
+          />
           <Route
             path="/sign-in"
-            element={isLoggedIn ? <Navigate to='/movies'/> : <Login
+            element={isLoggedIn ? <Navigate to='/movies' /> : <Login
               onLogin={handleAuthorizationUser}
             />}
           />
