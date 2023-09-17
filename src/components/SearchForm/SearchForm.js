@@ -51,15 +51,23 @@ function SearchForm({
 
     // // изменение состояния чекбокса
   const handleClickCheckbox = (e) => {
-    e.preventDefault();
     if (e.target.checked) {
       setIsShorts(true);
       findNewMovies(values.movie, setErrors);
-      localStorage.setItem("isShorts", true);
+      if (!isSavedMovies) {
+        localStorage.setItem("isShorts", true);
+      } else {
+        localStorage.setItem("isShortsSavedMovies", true);
+      }
+      
     } else {
       setIsShorts(false);
       findNewMovies(values.movie, setErrors);
-      localStorage.setItem("isShorts", false);
+      if (!isSavedMovies) {
+        localStorage.setItem("isShorts", false);
+      } else {
+        localStorage.setItem("isShortsSavedMovies", false);
+      }
     }
   };
 
