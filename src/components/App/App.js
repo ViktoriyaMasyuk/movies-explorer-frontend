@@ -63,7 +63,7 @@ function App() {
           setCurrentUser(currentUser.data);
         })
         .catch((err) => {
-          console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
+          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
         });
       //}
   }
@@ -74,7 +74,7 @@ function App() {
           setSavedMovies(savedMovies);
         })
         .catch((err) => {
-          console.log(`Что-то пошло не так! Ошибка сервера ${err}`);
+          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
         });
   }
 
@@ -199,7 +199,7 @@ function App() {
         setIsSaved(true);
       })
       .catch((err) => {
-        alert(err.message);
+        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
       });
   };
 
@@ -215,7 +215,7 @@ function App() {
         setIsSaved(false);
       })
       .catch((err) => {
-        alert(err.message);
+        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
       });
   };
 
