@@ -50,32 +50,25 @@ function App() {
     }
   }, [token, navigate, pathname]);
 
+  // получение данных пользватель и сохраненных фильмов
   useEffect(() => {
     if (isLoggedIn) {
-      getUserInfo();
-      getSavedMovies();
+      MainApi.getUserInfo()
+        .then((currentUser) => {
+          setCurrentUser(currentUser.data);
+        })
+        .catch((err) => {
+          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
+        });
+      MainApi.getSavedMovies()
+        .then((savedMovies) => {
+          setSavedMovies(savedMovies);
+        })
+        .catch((err) => {
+          handleOpenInfoTooltip(`Ошибка сервера ${err}`);
+        });
     }
   }, [isLoggedIn]);
-
-  function getUserInfo() {
-    MainApi.getUserInfo()
-      .then((currentUser) => {
-        setCurrentUser(currentUser.data);
-      })
-      .catch((err) => {
-        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
-      });
-  }
-
-  function getSavedMovies() {
-    MainApi.getSavedMovies()
-      .then((savedMovies) => {
-        setSavedMovies(savedMovies);
-      })
-      .catch((err) => {
-        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
-      });
-  }
 
   // открытие и закрытие попапа навигации
   function handleEditNavBarClick() {
