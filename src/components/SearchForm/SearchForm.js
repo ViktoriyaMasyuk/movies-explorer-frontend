@@ -49,7 +49,7 @@ function SearchForm({
     findNewMovies(values.movie, setErrors);
   };
 
-    // // изменение состояния чекбокса
+  // // изменение состояния чекбокса
   const handleClickCheckbox = (e) => {
     if (e.target.checked) {
       setIsShorts(true);
@@ -59,7 +59,7 @@ function SearchForm({
       } else {
         localStorage.setItem("isShortsSavedMovies", true);
       }
-      
+
     } else {
       setIsShorts(false);
       findNewMovies(values.movie, setErrors);
@@ -76,7 +76,7 @@ function SearchForm({
       handlePutWord(setValues);
 
     }
-  }, [handlePutWord]);
+  }, [handlePutWord, isSavedMovies]);
 
   return (
     <section className='search'>

@@ -65,7 +65,6 @@ function App() {
       .catch((err) => {
         handleOpenInfoTooltip(`Ошибка сервера ${err}`);
       });
-    //}
   }
 
   function getSavedMovies() {
@@ -109,6 +108,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        handleOpenInfoTooltip(`Ошибка сервера ${err}`);
       })
       .finally(() => {
         preloader(false);
@@ -133,10 +133,8 @@ function App() {
 
   // авторизация пользователя
   function handleAuthorizationUser(data) {
-    //console.log(data);
     Auth.authorize(data)
       .then((res) => {
-        console.log(res);
         localStorage.setItem('jwt', res.token);
         handleLogin();
         handleOpenInfoTooltip('Вы успешно авторизовались!');
@@ -162,7 +160,6 @@ function App() {
   }
   // функция обновления данных профиля
   function handleUpdateUser(name, email) {
-    console.log(name, email);
     MainApi.updateUserInfo(name, email)
       .then((data) => {
         setCurrentUser(data);
@@ -188,7 +185,6 @@ function App() {
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
     };
-    console.log(objMovie);
     MainApi
       .saveMovies(objMovie)
       .then((objMovie) => {
@@ -204,7 +200,6 @@ function App() {
 
   // функция удаления фильма
   const handleDeleteMovie = (movie, setIsSaved) => {
-    console.log(movie)
     MainApi
       .deleteMovie(movie._id)
       .then(() => {
