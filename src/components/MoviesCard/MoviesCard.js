@@ -1,97 +1,63 @@
+import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
-import React from 'react';
-import photo from '../../images/pic__COLOR_pic.svg';
-import photo2 from '../../images/ pic__COLOR_pic-2.png';
-import photo3 from '../../images/pic__COLOR_pic-3.png';
+import React, { useEffect, useState } from 'react';
+import { SERVER_URL } from '../../utils/constants';
 
-function MoviesCard() {
+function MoviesCard({ movie, isSavedMovies, handleIsSavedToogle, checkIsSaved }) {
+    const [isSaved, setIsSaved] = useState(false);
+    const { pathname } = useLocation();
+
+    //  тогл удаление и добавления в список сохраненых фильмов
+    const handleOnClick = (e) => {
+        handleIsSavedToogle(e, movie, setIsSaved, isSaved);
+    };
+
+    useEffect(() => {
+        if (!isSavedMovies) {
+            if (checkIsSaved(movie)) {
+                setIsSaved(true);
+            } else {
+                setIsSaved(false);
+            }
+        }
+    }, [checkIsSaved, movie, isSavedMovies]);
+
+    const formatTime = (minutes) => {
+        const min = minutes % 60;
+        const hour = Math.floor(minutes / 60);
+        return hour ? `${hour}ч ${min}м` : `${min}м`;
+    };
+
     return (
         <>
-            <template id="card">
-                <div className='card'>
+            <article className='card'>
+                <a className='card__link'
+                    href={movie.trailerLink}
+                    target="_blank"
+                    rel="noreferrer">
                     <div className='card__info'>
-                        <h2 className='card__title'>В погоне за Бенкси</h2>
-                        <p className='card__duration'>27 минут</p>
+                        <h2 className='card__title'>{movie.nameRU}</h2>
+                        <p className='card__duration'>{formatTime(movie.duration)}</p>
                     </div>
-                    <img className='card__image' alt='Заставка фильма' src={photo} />
-                    <button className='card__button' type='submit'>Сохранить</button>
-                </div>
-            </template>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo2} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo3} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo2} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo3} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo2} />
-                <button className='card__button' type='submit'></button>
-            </div>
-            <div className='card'>
-                <div className='card__info'>
-                    <h2 className='card__title'>В погоне за Бенкси</h2>
-                    <p className='card__duration'>27 минут</p>
-                </div>
-                <img className='card__image' alt='Заставка фильма' src={photo} />
-                <button className='card__button' type='submit'></button>
-            </div>
-
+                    <img
+                        className='card__image'
+                        alt={movie.nameRU}
+                        src={
+                            isSavedMovies
+                                ? movie.image
+                                : SERVER_URL + movie.image.url} />
+                </a>
+                {pathname === '/movies' ? (
+                    <button type="button" className={`card__button card__button_type${isSaved ? '_is-saved' : '_save'}`} onClick={handleOnClick}>{isSaved ? "" : "Сохранить"}</button>
+                ) :
+                    (
+                        <button
+                            onClick={handleOnClick}
+                            className="card__button card__button_type_delete"
+                        ></button>
+                    )}
+            </article>
         </>
-
     );
 };
 export default MoviesCard;

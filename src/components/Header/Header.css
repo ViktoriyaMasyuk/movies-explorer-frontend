@@ -29,7 +29,7 @@
   .header__logo {
     margin: 18px auto 18px 0;
   }
-  .header {
+  .header__section {
     padding: 0 30px;
   }
 }
@@ -37,7 +37,7 @@
   .header__logo {
     margin: 18px auto 18px 0;
   }
-  .header {
+  .header__section {
     padding: 0 14px;
   }
   .header__links {

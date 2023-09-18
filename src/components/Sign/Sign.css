@@ -16,8 +16,8 @@
 }
 .sign__form {
   width: 100%;
-  margin: 0 0 110px 0;
   padding: 0;
+  
 }
 .sign__set {
   border: none;
@@ -28,6 +28,7 @@
   flex-direction: column;
   align-content: stretch;
   align-items: flex-start;
+  margin: 0 0 110px 0;
 }
 .sign__info {
   color: #8b8b8b;
@@ -36,6 +37,10 @@
   line-height: normal;
   margin: 0;
   padding-bottom: 5px;
+}
+.sign__item {
+  width: 100%;
+
 }
 .sign__input {
   width: 100%;
@@ -47,7 +52,7 @@
   border: none;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(66, 66, 66, 1);
-  margin-bottom: 24px;
+  outline: none;
 }
 .sign__submit {
   border-radius: 3px;
@@ -60,6 +65,8 @@
   width: 396px;
   height: 45px;
   border: none;
+  transition: opacity .2s linear;
+  margin-bottom: 16px;
 }
 .sign__text {
   color: #8b8b8b;
@@ -67,13 +74,33 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+  margin: 0;
 }
 .sign__link {
   color: #4285f4;
   cursor: pointer;
   text-decoration: none;
 }
-
+.sign__input-error {
+  opacity: 0;
+  display: block;
+  margin: 5px 0 5px 0;
+  color: #ff3055;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 12px;
+  margin-bottom: 24px;
+}
+.sign__input-error-display {
+  opacity: 1;
+}
+.sign__button_disabled {
+  background-color: #d9d9d9;
+  color: #000;
+  cursor: default;
+  pointer-events: none;
+  opacity: .2;
+}
 @media screen and (max-width: 510px) {
   .sign {
     max-width: 260px;

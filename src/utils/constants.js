@@ -1,0 +1,11 @@
+export const MAX_DURATION_SHORTS =  40;
+export const LAPTOR_WIDTH = 1270;
+export const MOBILE_WIDTH = 480;
+export const LARGE_PAGE_MOVIES_AMOUNT = 12;
+export const LARGE_PAGE_ADD_MOVIES_AMOUNT = 3;
+export const MEDIUM_PAGE_MOVIES_AMOUNT = 8;
+export const MEDIUM_PAGE_ADD_MOVIES_AMOUNT = 2;
+export const SMALL_PAGE_MOVIES_AMOUNT = 5;
+export const SMALL_PAGE_ADD_MOVIES_AMOUNT = 2;
+export const SERVER_URL = 'https://api.nomoreparties.co';
+export const MAIN_URL = 'https://api.v-masyuk.diplom.nomoreparties.co';

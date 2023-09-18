@@ -2,6 +2,11 @@
   margin: 80px auto 70px auto;
   max-width: 1140px;
   padding: 0 70px;
+  display: flex;
+  flex-direction: column;
+}
+.cardlist_type_saved-movies {
+  padding-bottom: 230px;
 }
 .cardlist__elements {
   margin: 0 auto 60px auto;
@@ -32,6 +37,15 @@
 }
 .cardlist__button-more:hover {
   opacity: 0.8;
+}
+.cardlist__text {
+  margin: 0 auto 0 0;
+  align-self: start;
+  padding: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.11;
+  color: #A0A0A0;
 }
 
 @media screen and (max-width: 1250px) {
